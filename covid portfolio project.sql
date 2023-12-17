@@ -95,7 +95,7 @@ and cd.date=cv.date
 )
 select *,(rollingpeoplevaccinated/population)*100 as percent_rollingpeople from per_peo_vac;
 
-/* creating view to store data for later visualizations*/
+/* creating view */
 create view percentpopulationvaccinated as
 select cd.continent,cd.location,cd.date,cd.population,cv.new_vaccinations,
 sum(cv.new_vaccinations) over(partition by cd.location order by cd.date,cd.location) as rollingpeoplevaccinated
